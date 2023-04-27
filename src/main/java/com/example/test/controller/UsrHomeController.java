@@ -7,37 +7,33 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class UsrHomeController {
 
-	int cnt = 0;
+	private int count;
 
-	@RequestMapping("/usr/home/main")
-	@ResponseBody
-	public String showMain() {
-		return "안녕하세요.";
+	public UsrHomeController() {
+		count = -1;
 	}
 
-	@RequestMapping("/usr/home/main2")
+	@RequestMapping("/usr/home/getCount")
 	@ResponseBody
-	public String showMain2() {
-		return "반갑습니다.";
+	public int getCount() {
+		count++;
+		
+		return count;
 	}
 
-	@RequestMapping("/usr/home/main3")
+	@RequestMapping("/usr/home/doSetCount")
 	@ResponseBody
-	public String showMain3() {
-		return "또만나요.";
+	public String doSetCount(int cnt) {
+		
+		this.count = cnt;
+		return "Count의 값이 " + this.count +"으로 초기화 되었습니다.";
 	}
 
-	@RequestMapping("/usr/home/main4")
-	@ResponseBody
-	public int showMain4() {
-		cnt++;
-		return cnt;
-	}
 
-	@RequestMapping("/usr/home/main5")
+	@RequestMapping("/usr/home/doResetCount")
 	@ResponseBody
-	public String showMain5() {
-		cnt = 0;
-		return "count값이 초기화되어 0 입니다";
+	public String doResetCount() {
+		count = 0;
+		return "count의 값이 초기화되어 0 입니다.";
 	}
 }
