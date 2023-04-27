@@ -2,6 +2,7 @@ package com.example.test.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,5 +33,13 @@ public class UsrHomeController {
 		passengerLastNo = no;
 		return passenger;
 	}
+	
+	@RequestMapping("/usr/passenger/getPassengers")
+	@ResponseBody
+	public List<Passenger> getPassengers(String name, String id, String gender) {
+
+		return passengers;
+	}
+
 
 }
